@@ -3,5 +3,5 @@ reason = [
 ,"You don't pay me enough."
 ,"Put it on the list."]
 module.exports = (robot) ->
- robot.respond /can you/, (msg) ->
+ robot.respond /can you/i, (msg) ->
   msg.send msg.random reason
