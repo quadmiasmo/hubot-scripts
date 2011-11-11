@@ -1,6 +1,6 @@
 {
   "name":        "hubot-scripts",
-  "version":     "1.1.6",
+  "version":     "1.1.8",
   "author":      "hubot",
   "keywords":    "hubot plugin scripts campfire bot robot",
   "description": "Allows you to opt in to a variety of scripts",
@@ -15,7 +15,8 @@
   },
 
   "dependencies": {
-    "hubot": ">= 1.1.2",
+    "hubot": ">= 1.1.9",
+    "optparse": "1.0.3",
     "redis": "0.6.7",
     "jsdom": "==0.2.0",
     "xml2js": "0.1.x",
@@ -25,7 +26,9 @@
     "sprintf": "0.1.1",
     "hashlib": "1.0.1",
     "wwwdude": "0.1.0",
-    "pypi": "0.1.0"
+    "pypi": "0.1.0",
+    "underscore": ">= 1.2.1",
+    "underscore.string": ">= 1.1.6"
   },
 
   "directories":  {
