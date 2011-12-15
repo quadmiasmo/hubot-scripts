@@ -14,11 +14,21 @@ environments = [ "DEV", "SQA", "STG", "PROD" ]
 
 module.exports = (robot) ->
 
+    # Retrieves and displays details for a specific event log entry
+    #
+    # responds to:
+    #   <robotName> corbis error me <guid> in <environment>
+    #
     robot.respond /(corbis )?error(?: me| show)? "?([0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12})"?(?: (?:in|for|from|use) (dev|sqa|stg|prod|[a-z]+)\b)?( archives)?/i, (msg) ->
         validateRequest msg, (errorlog) ->
-            msg.send "Calling service for event log. ActivityUid: #{errorlog.uid}, Environment: #{errorlog.env}, FromArchives: #{errorlog.archived}...."
+            msg.send "Calling service for event log. ActivityUid: #{errorlog.uid}, Environment: #{errorlog.env}...."
             displayErrorLog msg, errorlog
 
+    # Retrieves and displays the top n most occurring error messages (with counts)
+    #
+    # responds to:
+    #   <robotName> corbis errors show top <number> in <environment>
+    #
     robot.respond /(corbis )?errors(?: me| show)?(?: (?:top )?(\d+))?(?: (?:in|for|from|use) (dev|sqa|stg|prod|[a-z]+)\b)?/i, (msg) ->
         validateRequest msg, (errorlog) ->
             count = if msg.match[2]? then msg.match[2] else 10
